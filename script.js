@@ -21,11 +21,26 @@ function showScene(number) {
 // Scene 1: Search backpack
 function searchBackpack() {
     hasFlashlight = true;
-
+    document.getElementById("inv-flashlight").classList.remove("hidden");
     document.getElementById("forestResult").innerHTML =
         "You found a flashlight! It might be useful later.";
 }
 
+// Scene 1: Check phone
+function checkPhone() {
+    if (battery >= 2) {
+        battery -= 2;
+
+        document.getElementById("forestResult").innerHTML =
+            "You have no signal! But you have received a message: Find the river.";
+    } else {
+        document.getElementById("forestResult").innerHTML =
+            "Your phone battery is too low!";
+    }
+
+    document.getElementById("battery").innerHTML =
+        "Phone Battery: " + battery + "%";
+}
 
 // Scene 2: Choose path
 function choosePath(path) {
@@ -40,9 +55,9 @@ function choosePath(path) {
 // Scene 3: Examine note
 function examineNote() {
     foundCode = true;
-
+    document.getElementById("inv-code").classList.remove("hidden");
     document.getElementById("cabinResult").innerHTML =
-        "The note reveals a secret code: 1947.";
+        "The note reveals a secret code: 7849.";
 }
 
 
@@ -50,7 +65,7 @@ function examineNote() {
 function openDrawer() {
     if (foundCode) {
         hasMap = true;
-
+        document.getElementById("inv-map").classList.remove("hidden");
         document.getElementById("cabinResult").innerHTML =
             "You unlocked the drawer and found a map!";
     } else {
@@ -82,7 +97,7 @@ function useFlashlight() {
         );
     } else {
         returnToCrossroads(
-            "You don't have a flashlight! Search for supplies first."
+            "You don't have a flashlight! Go back to the forest."
         );
     }
 }
@@ -130,6 +145,10 @@ function restartGame() {
     foundCode = false;
     gameEnded = false;
 
+    document.getElementById("battery").innerHTML = "Phone Battery: 5%";
+    document.getElementById("inv-flashlight").classList.add("hidden");
+    document.getElementById("inv-map").classList.add("hidden");
+    document.getElementById("inv-code").classList.add("hidden");
     document.getElementById("forestResult").innerHTML = "";
     document.getElementById("cabinResult").innerHTML = "";
     document.getElementById("riverResult").innerHTML = "";
