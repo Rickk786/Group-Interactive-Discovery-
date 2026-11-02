@@ -46,13 +46,15 @@
         <section id="scene2" class="scene hidden">
             <h2>Scene 2: The Crossroads</h2>
             <img src="images/creepy forest crossroads.avif" alt="Forest crossroads">
-            <p>You arrive at a crossroads.<br>The left path leads to an abandoned cabin, while the right path follows a river.<br>Choose a path.</p>
-            <p><em>"Not every path leads home."</em></p>
+            <p>You arrive at a crossroads.<br>The left path leads to an abandoned cabin,<br>while the right path follows a river.<br>Choose a path.</p>
             <button onclick="choosePath('cabin')">
                 Go to the Cabin
             </button>
             <button onclick="choosePath('river')">
                 Follow the River
+            </button>
+            <button onclick="showScene(1)">
+                Return to Forest
             </button>
         </section>
         
