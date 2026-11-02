@@ -1,5 +1,4 @@
-
-// Variables that remember player actions
+// Remember player actions
 let hasFlashlight = false;
 let hasMap = false;
 let foundCode = false;
@@ -17,7 +16,6 @@ function showScene(number) {
         .classList.remove("hidden");
 }
 
-
 // Scene 1: Search backpack
 function searchBackpack() {
     hasFlashlight = true;
@@ -26,7 +24,7 @@ function searchBackpack() {
         "You found a flashlight! It might be useful later.";
 }
 
-// Scene 1: Check phone
+// Scene 1: Check Phone
 function checkPhone() {
     if (battery >= 2) {
         battery -= 2;
@@ -42,7 +40,7 @@ function checkPhone() {
         "Phone Battery: " + battery + "%";
 }
 
-// Scene 2: Choose path
+// Scene 2: Choose A Path
 function choosePath(path) {
     if (path === "cabin") {
         showScene(3);
@@ -51,8 +49,7 @@ function choosePath(path) {
     }
 }
 
-
-// Scene 3: Examine note
+// Scene 3: Examine Note
 function examineNote() {
     foundCode = true;
     document.getElementById("inv-code").classList.remove("hidden");
@@ -60,8 +57,7 @@ function examineNote() {
         "The note reveals a secret code: 7849.";
 }
 
-
-// Scene 3: Open drawer
+// Scene 3: Open Drawer
 function openDrawer() {
     if (foundCode) {
         hasMap = true;
@@ -74,8 +70,7 @@ function openDrawer() {
     }
 }
 
-
-// Scene 4: Use map
+// Scene 4: Map
 function useMap() {
     if (hasMap) {
         endGame(
@@ -88,8 +83,7 @@ function useMap() {
     }
 }
 
-
-// Scene 4: Use flashlight
+// Scene 4: Flashlight
 function useFlashlight() {
     if (hasFlashlight) {
         endGame(
@@ -101,7 +95,6 @@ function useFlashlight() {
         );
     }
 }
-
 
 // Return to crossroads if player lacks an item
 function returnToCrossroads(message) {
@@ -116,8 +109,7 @@ function returnToCrossroads(message) {
     }, 1800);
 }
 
-
-// Show ending and restart button
+// Play Again
 function endGame(message) {
     gameEnded = true;
 
@@ -137,8 +129,7 @@ function endGame(message) {
     });
 }
 
-
-// Restart game
+// Restart
 function restartGame() {
     hasFlashlight = false;
     hasMap = false;
